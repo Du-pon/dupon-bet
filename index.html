@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DÜPÖN BET</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#101827;color:white;font-family:Arial,sans-serif}
+header{background:#07111f;padding:20px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:23px;font-weight:bold;color:#24d982}
+.logo span{color:white}
+.balance{background:#203449;padding:10px;border-radius:9px;font-size:13px}
+nav{display:flex;justify-content:space-around;background:#172438;padding:15px}
+nav a{color:white;text-decoration:none;font-size:13px}
+.hero{padding:25px 18px;background:linear-gradient(120deg,#075c43,#102a39)}
+.hero h1{font-size:27px;margin:5px 0}
+.hero p{color:#d5e9df}
+h2{font-size:19px;margin:22px 15px 12px}
+.match{background:#1c2a3d;margin:12px;padding:16px;border-radius:12px}
+.league{font-size:12px;color:#aab8ca}
+.teams{display:flex;justify-content:space-between;margin:18px 0;font-weight:bold}
+.odds{display:flex;gap:9px}
+.odds button{flex:1;background:#30445c;color:white;border:1px solid #50647b;border-radius:7px;padding:12px 5px}
+.odds button:active{background:#19a66b}
+small{color:#b6c4d3}
+#ticket{margin:15px;background:#1c2a3d;padding:16px;border-radius:12px}
+input{width:100%;padding:12px;border:0;border-radius:7px;margin:10px 0}
+.action{background:#19bd78;color:#07111f;border:0;padding:13px;width:100%;border-radius:8px;font-weight:bold}
+footer{text-align:center;padding:25px;color:#9cabbc;font-size:12px}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">DÜPÖN <span>BET</span></div>
+<div class="balance">Crédits : <b id="balance">10000</b> FCFA</div>
+</header>
+<nav>
+<a href="#home">Accueil</a>
+<a href="#matches">Football</a>
+<a href="#ticket">Mes paris</a>
+</nav>
+<section class="hero" id="home">
+<h1>Bienvenue sur DÜPÖN BET</h1>
+<p>Le sport, les pronostics et le plaisir du jeu virtuel !</p>
+<b>Plateforme de démonstration</b>
+</section>
+<h2 id="matches">⚽ Matchs du jour</h2>
+<div class="match">
+<div class="league">LIGUE DE DÉMONSTRATION</div>
+<div class="teams"><span>Real Madrid</span><span>VS</span><span>Barcelona</span></div>
+<div class="odds">
+<button onclick="choose('Real Madrid',2.10)">1<br>2.10</button>
+<button onclick="choose('Match nul',3.20)">N<br>3.20</button>
+<button onclick="choose('Barcelona',2.80)">2<br>2.80</button>
+</div>
+</div>
+<div class="match">
+<div class="league">LIGUE DE DÉMONSTRATION</div>
+<div class="teams"><span>PSG</span><span>VS</span><span>Marseille</span></div>
+<div class="odds">
+<button onclick="choose('PSG',1.80)">1<br>1.80</button>
+<button onclick="choose('Match nul',3.50)">N<br>3.50</button>
+<button onclick="choose('Marseille',4.00)">2<br>4.00</button>
+</div>
+</div>
+<div id="ticket">
+<h2>🎫 Mon ticket virtuel</h2>
+<p id="selection">Sélectionne une cote.</p>
+<input id="stake" type="number" placeholder="Mise en crédits virtuels">
+<p>Gain potentiel : <b id="gain">0 FCFA</b></p>
+<button class="action" onclick="bet()">Valider mon pari virtuel</button>
+<p id="message"></p>
+</div>
+<footer>
+DÜPÖN BET © 2026<br>
+Démo uniquement – Aucun argent réel.
+</footer>
+<script>
+let balance=10000;
+let selected="";
+let odd=0;
+function choose(name,cote){
+selected=name;
+odd=cote;
+document.getElementById("selection").innerText=name+" – Cote "+cote;
+document.getElementById("stake").value="";
+document.getElementById("gain").innerText="0 FCFA";
+}
+document.getElementById("stake").addEventListener("input",function(){
+let n=Number(this.value);
+document.getElementById("gain").innerText=
+n>0?(n*odd).toFixed(0)+" FCFA":"0 FCFA";
+});
+function bet(){
+let n=Number(document.getElementById("stake").value);
+if(!selected){alert("Choisis une cote.");return;}
+if(n<=0||n>balance){alert("Mise invalide ou crédits insuffisants.");return;}
+balance-=n;
+document.getElementById("balance").innerText=balance;
+document.getElementById("message").innerText=
+"Pari virtuel enregistré : "+selected+". Aucun argent réel.";
+document.getElementById("stake").value="";
+document.getElementById("gain").innerText="0 FCFA";
+selected="";
+}
+</script>
+</body>
+</html>
