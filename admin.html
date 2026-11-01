@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Admin DÜPÖN</title>
+<style>body{margin:0;background:#0a1526;color:#fff;font-family:Arial;padding:16px}input,button{width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #2a4a76;background:#13223a;color:#fff}button{background:#ffc800;color:#000;font-weight:900;border:0} .card{background:#152641;padding:10px;border-radius:10px;margin:8px 0;font-size:13px} h2{color:#ffc800}</style></head><body>
+<h2>Admin DÜPÖN BET - Gestion Matchs</h2>
+<input id="league" placeholder="Ligue ex: BÉNIN LIGUE • 16:00">
+<input id="team1" placeholder="Équipe 1 ex: Coton FC">
+<input id="team2" placeholder="Équipe 2 ex: Loto Popo">
+<input id="c1" type="number" step="0.01" placeholder="Cote 1 ex: 2.10">
+<input id="cx" type="number" step="0.01" placeholder="Cote X ex: 3.20">
+<input id="c2" type="number" step="0.01" placeholder="Cote 2 ex: 3.50">
+<button onclick="addMatch()">+ AJOUTER LE MATCH</button>
+<button onclick="clearAll()" style="background:#ff4444;color:#fff">Effacer tous les matchs</button>
+<div id="list"></div>
+<a href="index.html" style="color:#ffc800;display:block;margin-top:20px;text-align:center">Voir le site →</a>
+<script>
+let matchs=JSON.parse(localStorage.getItem('dupon_matchs')||'[]');
+function render(){let h='';matchs.forEach((m,i)=>{h+=`<div class="card"><b>${m.league}</b><br>${m.team1} - ${m.team2}<br>1:${m.c1} X:${m.cx} 2:${m.c2}<br><small onclick="del(${i})" style="color:#ff6b6b">Supprimer</small></div>`});document.getElementById('list').innerHTML=h; localStorage.setItem('dupon_matchs',JSON.stringify(matchs));}
+function addMatch(){let l=document.getElementById('league').value||'MATCH DU JOUR';let t1=document.getElementById('team1').value;let t2=document.getElementById('team2').value;let c1=document.getElementById('c1').value;let cx=document.getElementById('cx').value;let c2=document.getElementById('c2').value; if(!t1||!t2||!c1)return alert('Remplis au moins équipe 1, équipe 2 et cote 1'); matchs.push({league:l,team1:t1,team2:t2,c1,cx,c2}); render(); document.getElementById('team1').value='';document.getElementById('team2').value='';}
+function del(i){matchs.splice(i,1);render();}
+function clearAll(){if(confirm('Effacer tout?')){matchs=[];render();}}
+render();
+</script></body></html>
