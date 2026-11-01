@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DÜPÖN BET - Coupon</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#0a1526;color:white;font-family:Arial}
+header{background:#07111f;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:20}
+.logo{font-size:21px;font-weight:900;color:#ffcc00}.logo span{color:white}
+.solde-box{background:#13223a;border:1px solid #22385c;border-radius:10px;padding:5px 6px 5px 10px;display:flex;align-items:center;gap:8px}
+.solde-text small{font-size:9px;color:#8aa0be;display:block}.solde-text b{font-size:13px;color:#2eff8a}
+.btn-depot{background:#00b85f;border:none;color:white;padding:7px 10px;border-radius:7px;font-weight:bold;font-size:12px}
+.hero{padding:18px;background:linear-gradient(135deg,#193054,#0f1f33)}
+.sec-head{margin:14px 12px 0;display:flex;justify-content:space-between}
+.match{background:#152641;margin:10px 12px;border-radius:14px;padding:12px;border:1px solid #22385c}
+.league{font-size:11px;color:#7ea0c2}
+.teams{display:flex;justify-content:space-between;font-weight:bold;margin-top:6px}
+.odds{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.odds button{flex:1;min-width:30%;background:#233a5e;border:1px solid #35527a;color:white;padding:10px 4px;border-radius:9px;font-weight:bold}
+.odds button.active{background:#ffcc00;color:black;border-color:#ffcc00}
+.coupon{position:fixed;bottom:0;left:0;right:0;background:#101e33;border-top:2px solid #ffcc00;padding:12px;z-index:30}
+.coupon-head{display:flex;justify-content:space-between;font-size:12px;color:#a0b8d0;margin-bottom:8px}
+.coupon-list{font-size:12px;max-height:70px;overflow:auto;margin-bottom:8px;color:#d0e0f0}
+.coupon-foot{display:flex;gap:8px;align-items:center}
+.coupon-foot input{width:90px;padding:10px;border-radius:8px;border:1px solid #35527a;background:#0a1526;color:white;text-align:center}
+.coupon-foot button{flex:1;background:#ffcc00;border:none;padding:12px;border-radius:9px;font-weight:900;color:black;font-size:14px}
+.gain{font-size:12px;color:#2eff8a;font-weight:bold}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">DÜPÖN <span>BET</span></div>
+<div class="solde-box"><div class="solde-text"><small>👛 SOLDE</small><b id="solde">5 000 FCFA</b></div><button class="btn-depot" onclick="depot()">⊕ Dépôt</button></div>
+</header>
