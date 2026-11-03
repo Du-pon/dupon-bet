@@ -9,7 +9,11 @@
 body{background:#0e0e0e;color:#fff;font-family:Arial,sans-serif}
 .header{background:#1c1c1c;height:48px;display:flex;justify-content:center;align-items:center;font-weight:700;border-bottom:1px solid #2a2a2a;position:relative}
 .header span{position:absolute;right:12px;color:#888}
-.card{background:#1c1c1c;margin:10px 8px;border-radius:12px;border:1px solid #262626;padding-bottom:8px}
+.card{background:#1c1c1c;margin:10px 8px;border-radius:12px;border:1px <script>
+if(localStorage.getItem("abonne") !== "oui"){
+location.href="abonnement.html";
+}
+</script> #262626;padding-bottom:8px}
 .card-top{padding:10px 12px;display:flex;justify-content:space-between;color:#7a7a7a;font-size:12px}
 .card-top b{color:#4a8bd1;font-size:18px}
 .teams{display:flex;justify-content:space-between;align-items:center;padding:4px 16px 12px;font-weight:700;font-size:14px}
