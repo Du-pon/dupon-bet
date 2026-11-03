@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIP DUPON</title>
+<style>
+body{background:#0e0e0e;color:#fff;font-family:Arial;padding:20px;text-align:center}
+.box{max-width:400px;margin:30px auto;background:#1c1c1c;padding:25px;border-radius:18px;border:1px solid #333}
+input{width:100%;padding:15px;border-radius:10px;border:1px solid #333;background:#111;color:#fff;font-size:18px;text-align:center;letter-spacing:1px;box-sizing:border-box}
+.btn{width:100%;padding:15px;border-radius:12px;border:0;background:#3aaa35;color:#fff;font-weight:800;font-size:16px;margin-top:12px;cursor:pointer}
+.msg{margin-top:15px;padding:12px;border-radius:10px;display:none;font-size:14px}
+</style>
+</head>
+<body>
+<div class="box">
+<h2>🔐 Accès VIP</h2>
+<p style="color:#aaa;font-size:13px">Entre ton code reçu sur WhatsApp</p>
+<input id="codeInput" placeholder="DUPON-XXXX">
+<button class="btn" id="btn">Débloquer mes matchs</button>
+<div id="msg" class="msg"></div>
+</div>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getDatabase, ref, get, set } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+const firebaseConfig = {
+  apiKey: "AIzaSyAW-SRuDTuFfSuIOxAJTVatqYKnTNwIeTE",
+  authDomain: "dupon-bet.firebaseapp.com",
+  databaseURL: "https://dupon-bet-default-rtdb.firebaseio.com",
+  projectId: "dupon-bet",
+  storageBucket: "dupon-bet.firebasestorage.app",
+  messagingSenderId: "114832407728",
+  appId: "1:114832407728:web:c01c17f92062c632704f75",
+  measurementId: "G-08QN6TRHE3"
+};
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const btn = document.getElementById('btn');
+btn.onclick = async () => {
+ let code = document.getElementById('codeInput').value.trim().toUpperCase();
+ let msg = document.getElementById('msg');
+ msg.style.display="block";
+ if(!code.startsWith("DUPON-") || code.length<9){msg.style.background="#ff3b3b";msg.innerText="❌ Code invalide. Format: DUPON-XXXX";return;}
+ msg.style.background="#333";msg.innerText="Vérification...";btn.disabled=true;
+ try{
+   const codeRef = ref(db, 'codes_utilises/' + code);
+   const snap = await get(codeRef);
+   if(snap.exists()){
+     msg.style.background="#ff9a00";
+     msg.innerText="⚠️ Ce code a déjà été utilisé. Un code = 1 personne.";
+     btn.disabled=false;return;
+   }
+   await set(codeRef, { date: new Date().toLocaleString('fr-FR'), used: true });
+   localStorage.setItem("vip_code", code);
+   localStorage.setItem("vip_actif", "true");
+   localStorage.setItem("vip_expire", (Date.now()+7*24*60*60*1000).toString());
+   msg.style.background="#3aaa35";msg.innerText="✅ Validé ! Redirection...";
+   setTimeout(()=>{window.location.href="index.html";},1000);
+ }catch(e){
+   msg.style.background="#ff3b3b";msg.innerText="Erreur: "+e.message;
+   btn.disabled=false;
+ }
+};
+</script>
+</body>
+</html>
