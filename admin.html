@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Admin DUPON BET</title>
+<style>body{background:#0a1526;color:#fff;font-family:Arial;padding:16px}input{width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #2a4a76;background:#13223a;color:#fff;box-sizing:border-box}button{width:100%;padding:12px;margin:6px 0;border-radius:8px;border:0;background:#ffc800;color:#000;font-weight:900}.card{background:#152641;padding:10px;border-radius:10px;margin:8px 0;font-size:13px}h2{color:#ffc800}a{color:#ffc800}</style></head>
+<body>
+<h2>Admin DÜPON BET - Gestion Matchs</h2>
+<input id="league" placeholder="Ligue ex: BÉNIN LIGUE • 16:00">
+<input id="team1" placeholder="Équipe 1 ex: Coton FC">
+<input id="team2" placeholder="Équipe 2 ex: Loto Popo">
+<input id="c1" type="number" step="0.01" placeholder="Cote 1 ex: 2.10">
+<input id="cx" type="number" step="0.01" placeholder="Cote X ex: 3.20">
+<input id="c2" type="number" step="0.01" placeholder="Cote 2 ex: 3.50">
+<button onclick="addMatch()">+ AJOUTER LE MATCH</button>
+<button onclick="clearAll()" style="background:#ff4444;color:#fff">Effacer tous les matchs</button>
+<div id="list"></div>
+<p style="text-align:center"><a href="index.html">Voir le site →</a></p>
+<script>
+const DB="https://dupon-bet-default-rtdb.firebaseio.com/matchs.json";
+async function load(){
+  let r=await fetch(DB); let d=await r.json()||{};
+  let html="";
+  for(let k in d){
+    let m=d[k];
+    html+=`<div class="card"><b>${m.league}</b><br>${m.team1} - ${m.team2}<br>1:${m.c1} X:${m.cx} 2:${m.c2}<br><span onclick="delOne('${k}')" style="color:#ff7777">Supprimer</span></div>`;
+  }
+  document.getElementById('list').innerHTML=html||"Aucun match";
+}
+async function addMatch(){
+  let m={league:document.getElementById('league').value, team1:document.getElementById('team1').value, team2:document.getElementById('team2').value, c1:document.getElementById('c1').value, cx:document.getElementById('cx').value, c2:document.getElementById('c2').value};
+  if(!m.team1) return alert('Mets équipe 1');
+  await fetch(DB,{method:'POST',body:JSON.stringify(m)});
+  alert('Match publié sur le site !');
+  load();
+}
+async function delOne(k){ await fetch("https://dupon-bet-default-rtdb.firebaseio.com/matchs/"+k+".json",{method:'DELETE'}); load(); }
+async function clearAll(){ if(confirm('Effacer tout ?')){ await fetch(DB,{method:'DELETE'}); load(); } }
+load();
+</script>
+</body></html>
