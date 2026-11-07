@@ -31,24 +31,32 @@
 <button onclick="voirGratuit()" style="width:100%; background:#1a8a2a; color:white; padding:13px; font-weight:bold; font-size:16px; border:none; border-radius:8px;">VOIR LES COUPONS GRATUITS 👇</button>
 </div>
 
-<!-- VIP AVEC TARIFS -->
+<!-- VIP AVEC CHOIX -->
 <div style="background:#222; border:2px solid #ffd700; border-radius:12px; padding:20px;">
 <h3 style="color:#ffd700;">👑 ACCÈS VIP</h3>
 <p>Seulement pour ceux qui ont payé l'abonnement.</p>
 
-<!-- TARIFS VIP -->
-<div style="text-align:left; background:#111; border-radius:10px; padding:15px; margin:15px 0;">
-<h4 style="text-align:center; color:#ffd700; margin-top:0;">💰 NOS TARIFS VIP</h4>
-<p style="margin:8px 0;">📅 <b>VIP 1 JOUR :</b> 500 F <br><span style="font-size:13px; color:#ccc;">1 coupon VIP + suivi</span></p>
-<hr style="border:1px solid #333;">
-<p style="margin:8px 0;">📅 <b>VIP 1 SEMAINE :</b> 2.500 F <br><span style="font-size:13px; color:#ccc;">7 jours de coupons VIP chaque jour - LE PLUS CHOISI</span></p>
-<hr style="border:1px solid #333;">
-<p style="margin:8px 0;">📅 <b>VIP 1 MOIS :</b> 7.500 F <br><span style="font-size:13px; color:#ccc;">30 jours de coupons VIP + groupe privé</span></p>
-</div>
+<h4 style="color:#ffd700;">💰 NOS TARIFS VIP</h4>
+<p style="color:#ffd700; font-size:14px;">👇 Choisis ton abonnement :</p>
 
-<a href="https://wa.me/2290160207296?text=Bonjour%20Dupon%2C%20je%20veux%20m%27abonner%20au%20VIP" style="display:block; background:#25D366; color:white; padding:13px; font-weight:bold; text-decoration:none; border-radius:8px; margin-bottom:15px;">📱 PAYER MON ABONNEMENT SUR WHATSAPP</a>
+<!-- CHOIX 1 JOUR -->
+<label style="display:block; background:#111; border:2px solid #333; border-radius:10px; padding:12px; margin-bottom:10px; text-align:left; cursor:pointer;">
+<input type="radio" name="abonnement" value="VIP 1 JOUR - 500 F" checked> <b>📅 VIP 1 JOUR : 500 F</b><br><span style="font-size:13px; color:#ccc; margin-left:22px;">1 coupon VIP + suivi</span>
+</label>
 
-<p>Tu as déjà payé ? Tape ton code ici :</p>
+<!-- CHOIX 1 SEMAINE -->
+<label style="display:block; background:#111; border:2px solid #ffd700; border-radius:10px; padding:12px; margin-bottom:10px; text-align:left; cursor:pointer;">
+<input type="radio" name="abonnement" value="VIP 1 SEMAINE - 2500 F"> <b>📅 VIP 1 SEMAINE : 2.500 F</b> <span style="background:#ffd700; color:black; font-size:11px; padding:2px 6px; border-radius:5px; font-weight:bold;">LE PLUS CHOISI</span><br><span style="font-size:13px; color:#ccc; margin-left:22px;">7 jours de coupons VIP chaque jour</span>
+</label>
+
+<!-- CHOIX 1 MOIS -->
+<label style="display:block; background:#111; border:2px solid #333; border-radius:10px; padding:12px; margin-bottom:15px; text-align:left; cursor:pointer;">
+<input type="radio" name="abonnement" value="VIP 1 MOIS - 7500 F"> <b>📅 VIP 1 MOIS : 7.500 F</b><br><span style="font-size:13px; color:#ccc; margin-left:22px;">30 jours de coupons VIP + groupe privé</span>
+</label>
+
+<button onclick="allerWhatsApp()" style="width:100%; background:#25D366; color:white; padding:13px; font-weight:bold; font-size:16px; border:none; border-radius:8px;">📱 PAYER MON ABONNEMENT SUR WHATSAPP</button>
+
+<p style="margin-top:20px;">Tu as déjà payé ? Tape ton code ici :</p>
 <input id="codeVIP" type="text" placeholder="Tape ton code VIP" style="width:90%; padding:12px; font-size:16px; border-radius:8px; border:none; text-align:center;">
 <br><br>
 <button onclick="ouvrirVIP()" style="width:95%; background:#ffd700; color:black; padding:13px; font-weight:bold; font-size:16px; border:none; border-radius:8px;">🔓 ENTRER DANS LE VIP</button>
@@ -80,6 +88,12 @@
 function voirGratuit(){
   document.getElementById('gratuitZone').style.display = 'block';
   document.getElementById('gratuitZone').scrollIntoView();
+}
+function allerWhatsApp(){
+  var choix = document.querySelector('input[name="abonnement"]:checked').value;
+  var message = "Bonjour Dupon, je veux m'abonner au " + choix + ". Comment je paie ?";
+  var url = "https://wa.me/2290160207296?text=" + encodeURIComponent(message);
+  window.open(url, '_blank');
 }
 function ouvrirVIP(){
   var code = document.getElementById('codeVIP').value;
