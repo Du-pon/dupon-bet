@@ -7,44 +7,40 @@
 </head>
 <body style="margin:0; padding:0; background:#0a0a0a; color:white; font-family:Arial; text-align:center;">
 
-<!-- MESSAGE D'ACCUEIL -->
+<!-- ACCUEIL -->
 <div style="padding:30px 15px; background:#1a8a2a;">
 <h1 style="margin:0; font-size:28px;">👋 BIENVENUE CHEZ DUPON-BET</h1>
-<p style="font-size:17px; margin-top:10px;">Moi c'est <b>Dupon</b>, je pronostique des coupons gagnants pour t'aider à gagner chaque jour. Ici, pas de hasard, que des analyses sérieuses.</p>
+<p style="font-size:17px;">Moi c'est <b>Dupon</b>, je pronostique des coupons gagnants pour t'aider à gagner chaque jour.</p>
 </div>
 
-<!-- MES SERVICES -->
 <div style="padding:20px 15px; text-align:left;">
 <h2 style="text-align:center; color:#ffd700;">✅ CE QUE JE FAIS POUR TOI</h2>
-<p>⚽ <b>Je pronostique tes coupons :</b> Je choisis les meilleurs matchs chaque jour.</p>
-<p>🔥 <b>Coupons VIP :</b> Mes meilleurs pronostics, avec de grosses cotes, pour les abonnés.</p>
-<p>📊 <b>Coupons gratuits :</b> Je partage aussi des coupons gratuits pour te montrer mon travail.</p>
-<p>💬 <b>Suivi sur WhatsApp :</b> Je t'envoie tes coupons directement et je te conseille.</p>
+<p>⚽ <b>Je pronostique tes coupons</b></p>
+<p>🔥 <b>Coupons VIP :</b> Mes meilleurs pronostics, grosses cotes</p>
+<p>📊 <b>Coupons gratuits :</b> Pour te montrer mon travail</p>
 </div>
 
-<!-- BOUTON ABONNEMENT -->
-<div style="padding:10px 15px 30px 15px;">
-<a href="https://wa.me/229XXXXXXXXX" style="display:block; background:#25D366; color:white; padding:15px; font-size:20px; font-weight:bold; text-decoration:none; border-radius:10px;">📱 S'ABONNER POUR RECEVOIR MES COUPONS</a>
-<p style="font-size:14px; color:#ccc;">Clique ici pour t'abonner et recevoir mes pronostics VIP</p>
-</div>
-
-<!-- NOUVEAU : ACCES GRATUIT ET VIP -->
+<!-- CHOISIS TON ACCES -->
 <div style="padding:20px 15px;">
 <h2 style="color:#ffd700;">🎟️ CHOISIS TON ACCÈS</h2>
 
-<!-- FICHIER GRATUIT -->
+<!-- GRATUIT -->
 <div style="background:#222; border:2px solid #1a8a2a; border-radius:12px; padding:20px; margin-bottom:20px;">
-<h3 style="margin:0; font-size:22px;">🆓 PARIS GRATUITS</h3>
-<p style="font-size:15px;">Pour tout le monde. Vois mes coupons gratuits du jour.</p>
+<h3>🆓 PARIS GRATUITS</h3>
+<p>Pour tout le monde.</p>
 <a href="#gratuit" style="display:block; background:#1a8a2a; color:white; padding:13px; font-weight:bold; text-decoration:none; border-radius:8px;">VOIR LES COUPONS GRATUITS 👇</a>
 </div>
 
-<!-- FICHIER VIP -->
+<!-- VIP AVEC CODE -->
 <div style="background:#222; border:2px solid #ffd700; border-radius:12px; padding:20px;">
-<h3 style="margin:0; font-size:22px; color:#ffd700;">👑 ACCÈS VIP</h3>
-<p style="font-size:15px;">Seulement pour les personnes qui ont fait l'abonnement. Mes meilleurs pronostics, grosses cotes.</p>
-<a href="https://wa.me/2200160207296?text=Bonjour%20Dupon%2C%20j%27ai%20fait%20l%27abonnement%2C%20je%20veux%20mon%20acc%C3%A8s%20VIP" style="display:block; background:#ffd700; color:black; padding:13px; font-weight:bold; text-decoration:none; border-radius:8px;">🔓 ENTRER DANS LE VIP</a>
-<p style="font-size:13px; color:#ccc;">Tu as déjà payé ? Clique et envoie-moi ta preuve sur WhatsApp.</p>
+<h3 style="color:#ffd700;">👑 ACCÈS VIP</h3>
+<p>Seulement pour ceux qui ont payé l'abonnement.</p>
+<p>Tu as ton code ? Tape-le ici :</p>
+<input id="codeVIP" type="text" placeholder="Tape ton code VIP" style="width:90%; padding:12px; font-size:16px; border-radius:8px; border:none; text-align:center;">
+<br><br>
+<button onclick="ouvrirVIP()" style="width:95%; background:#ffd700; color:black; padding:13px; font-weight:bold; font-size:16px; border:none; border-radius:8px;">🔓 ENTRER DANS LE VIP</button>
+<p id="erreur" style="color:red; display:none;">❌ Code faux. Tu n'as pas payé ? Contacte Dupon.</p>
+<p style="font-size:13px; color:#ccc;">Pas encore abonné ? <a href="https://wa.me/2290160207296" style="color:#25D366; font-weight:bold;">Clique ici pour t'abonner sur WhatsApp</a></p>
 </div>
 </div>
 
@@ -54,16 +50,30 @@
 <img src="coupon2.jpg" style="width:100%; display:block;">
 <img src="photo3.jpg" style="width:100%; display:block;">
 
-<!-- COUPONS VIP - IMAGE FLOUTÉE -->
-<h2 style="color:#ffd700;">👑 MES DERNIERS COUPONS VIP</h2>
-<p style="padding:0 15px;">Abonnés seulement. Clique sur ENTRER DANS LE VIP en haut pour voir.</p>
+<!-- COUPONS VIP CACHÉS -->
+<div id="vipZone" style="display:none;">
+<h2 style="color:#ffd700;">👑 MES COUPONS VIP</h2>
 <img src="photo4.jpg" style="width:100%; display:block;">
 <img src="photo5.jpg" style="width:100%; display:block;">
 <img src="photo6.jpg" style="width:100%; display:block;">
+</div>
 
 <div style="padding:20px; background:#1a8a2a;">
 <p style="margin:0;">© 2026 DUPON-BET - Pronostics par Dupon</p>
 </div>
+
+<script>
+function ouvrirVIP(){
+  var code = document.getElementById('codeVIP').value;
+  if(code == "DUPONVIP"){
+    document.getElementById('vipZone').style.display = 'block';
+    document.getElementById('erreur').style.display = 'none';
+    document.getElementById('vipZone').scrollIntoView();
+  } else {
+    document.getElementById('erreur').style.display = 'block';
+  }
+}
+</script>
 
 </body>
 </html>
