@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DUPON-BET - Mes Pronostics</title>
+<title>DUPON PRONOSTICS - Mes Pronostics</title>
 </head>
 <body style="margin:0; padding:0; background:#0a0a0a; color:white; font-family:Arial; text-align:center;">
 
 <!-- ACCUEIL -->
 <div style="padding:30px 15px; background:#1a8a2a;">
-<h1 style="margin:0; font-size:28px;">👋 BIENVENUE CHEZ DUPON-BET</h1>
+<h1 style="margin:0; font-size:28px;">👋 BIENVENUE CHEZ DUPON PRONOSTICS</h1>
 <p style="font-size:17px;">Moi c'est <b>Dupon</b>, je pronostique des coupons gagnants pour t'aider à gagner chaque jour.</p>
 </div>
 
@@ -39,17 +39,14 @@
 <h4 style="color:#ffd700;">💰 NOS TARIFS VIP</h4>
 <p style="color:#ffd700; font-size:14px;">👇 Choisis ton abonnement :</p>
 
-<!-- CHOIX 1 JOUR -->
 <label style="display:block; background:#111; border:2px solid #333; border-radius:10px; padding:12px; margin-bottom:10px; text-align:left; cursor:pointer;">
 <input type="radio" name="abonnement" value="VIP 1 JOUR - 500 F" checked> <b>📅 VIP 1 JOUR : 500 F</b><br><span style="font-size:13px; color:#ccc; margin-left:22px;">1 coupon VIP + suivi</span>
 </label>
 
-<!-- CHOIX 1 SEMAINE -->
 <label style="display:block; background:#111; border:2px solid #ffd700; border-radius:10px; padding:12px; margin-bottom:10px; text-align:left; cursor:pointer;">
 <input type="radio" name="abonnement" value="VIP 1 SEMAINE - 2500 F"> <b>📅 VIP 1 SEMAINE : 2.500 F</b> <span style="background:#ffd700; color:black; font-size:11px; padding:2px 6px; border-radius:5px; font-weight:bold;">LE PLUS CHOISI</span><br><span style="font-size:13px; color:#ccc; margin-left:22px;">7 jours de coupons VIP chaque jour</span>
 </label>
 
-<!-- CHOIX 1 MOIS -->
 <label style="display:block; background:#111; border:2px solid #333; border-radius:10px; padding:12px; margin-bottom:15px; text-align:left; cursor:pointer;">
 <input type="radio" name="abonnement" value="VIP 1 MOIS - 7500 F"> <b>📅 VIP 1 MOIS : 7.500 F</b><br><span style="font-size:13px; color:#ccc; margin-left:22px;">30 jours de coupons VIP + groupe privé</span>
 </label>
@@ -81,7 +78,7 @@
 </div>
 
 <div style="padding:20px; background:#1a8a2a;">
-<p style="margin:0;">© 2026 DUPON-BET - Pronostics par Dupon</p>
+<p style="margin:0;">© 2026 DUPON PRONOSTICS - Pronostics par Dupon</p>
 </div>
 
 <script>
@@ -91,21 +88,11 @@ function voirGratuit(){
 }
 function allerWhatsApp(){
   var choix = document.querySelector('input[name="abonnement"]:checked').value;
-  var message = "Bonjour Dupon, je veux m'abonner au " + choix + ". Comment je paie ?";
+  var message = "Bonjour Dupon, je veux m'abonner au " + choix + " sur DUPON PRONOSTICS. Comment je paie ?";
   var url = "https://wa.me/2290160207296?text=" + encodeURIComponent(message);
   window.open(url, '_blank');
 }
 function ouvrirVIP(){
   var code = document.getElementById('codeVIP').value;
   if(code == "DUPONVIP"){
-    document.getElementById('vipZone').style.display = 'block';
-    document.getElementById('erreur').style.display = 'none';
-    document.getElementById('vipZone').scrollIntoView();
-  } else {
-    document.getElementById('erreur').style.display = 'block';
-  }
-}
-</script>
-
-</body>
-</html>
+    document.getElementById('vipZone').
